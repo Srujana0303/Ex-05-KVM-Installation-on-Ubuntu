@@ -13,11 +13,15 @@ egrep -c ‘(vmx |svm’) /proc/cpuinfo
 
 If this command returns the value 0, the cpu does not support hardware virtualization. If the command returns value 1 or greater, your cpu is capable of running virtualization software. The following screenshot shows the output of the
 
+<img width="379" alt="image" src="https://github.com/Srujana0303/Ex-05-KVM-Installation-on-Ubuntu/assets/132996836/9bca3edd-a1e4-4c52-894b-1aed4eceeee6">
 
 
  
 Another way to check would be to use the command kvm-ok.
 I issue this (kvm -ok)command on my system as well and discovered that I was missing some packages (cpu checker). I had to install this package first in order to be able to run the kvm-ok command (see the screenshot below).
+
+<img width="402" alt="image" src="https://github.com/Srujana0303/Ex-05-KVM-Installation-on-Ubuntu/assets/132996836/abe0ab53-7593-4a2d-9809-587f46d7f626">
+
  
 
 Note :
@@ -35,6 +39,9 @@ If the output is 0, you are not using a 64-bit CPU. If the Output is 1 or greate
 64-bit CPU and can proceed with the KVM installation
 
 
+<img width="450" alt="image" src="https://github.com/Srujana0303/Ex-05-KVM-Installation-on-Ubuntu/assets/132996836/fc02f222-3340-491c-8450-16b4188db0ae">
+
+
 Note: For your information, you can have kvm installed on a 32-bit system but will be then able to run only 32-bit guests
 
 Verifying that Operating system version
@@ -43,12 +50,20 @@ Using the system monitor interface or system details in ubuntu 12.04 , you can e
 For the geek, you can also using the command line and digit the following command line (see screenshot)
 
 
+<img width="453" alt="image" src="https://github.com/Srujana0303/Ex-05-KVM-Installation-on-Ubuntu/assets/132996836/222d7cbe-954f-4154-acf0-8a843d075338">
+
+
 If the output is something like x86_x64, you are running a 64-bit
  
 Installating KVM packages
 If you reach this section, we assume that you meet the basic requirements in order to have KVM software running. It’s time to download and install the kvm packages. With Ubuntu, this is quite easy. You can use the Ubuntu software GUI based interface or you can use the command line
 If you prefer to use the GUI,
 •	Launch the Ubuntu Software Center, and in the search box type qemu-kvm. Click on the package.The package is highlighted and you will see two buttons : more and Install. Click
+
+
+
+<img width="450" alt="image" src="https://github.com/Srujana0303/Ex-05-KVM-Installation-on-Ubuntu/assets/132996836/d03fab75-f87a-4455-9a32-7564c4966101">
+
 
 
 on more button.
@@ -61,6 +76,10 @@ You are ready to install the package. Press the Install button (scroll up to see
 
 Check that the Bridge-utils package has been installed as well. From the ubuntu Software Center, type in the search box bridge-utils and you should see it already installed. If not, install it
  
+
+<img width="443" alt="image" src="https://github.com/Srujana0303/Ex-05-KVM-Installation-on-Ubuntu/assets/132996836/9f8da99e-b87a-496d-8a74-155722280dea">
+
+
  
 If you prefer to use the command line ( slightly faster), simply type the following command and wait for the installation to complete.
 
@@ -73,9 +92,16 @@ You can perform the same installation operation using the command line by issuin
 sudo apt-get install virt-manager
 After the installation complete, you can try to connect to the management interface (by typing in the Dash/activities search box virtual. the application icons will be displayed. Click on it.
  
- 
+
+
+ <img width="443" alt="image" src="https://github.com/Srujana0303/Ex-05-KVM-Installation-on-Ubuntu/assets/132996836/790e4e5e-b24d-43b8-97f8-59b3eabc1c58">
+
 
 The application will start but you will get immediately an error message. (see screenshot)
+
+
+<img width="363" alt="image" src="https://github.com/Srujana0303/Ex-05-KVM-Installation-on-Ubuntu/assets/132996836/686e0a7b-7c9c-47e0-81fe-eb8579c163d3">
+
 
 
 Actually, you need to create a new user on your system and to add this user to a specific group (called libvirtd). This will basically grant the right to use the Virt-manager interface. With Ubuntu 12.04, it simply easier to perform the group creation from the command line. By default, Ubuntu
@@ -88,12 +114,25 @@ You will need to logoff and login again in order to have the changes applied. Tr
 
 Creating your First virtual machine
 It’s time to create you first virtual machine on Ubuntu when using KVM as your preferred Hypervisor. At this stage, you have launched the Virtual Machine Manager and you should see a dialog box similar to this one
+
+
+<img width="326" alt="image" src="https://github.com/Srujana0303/Ex-05-KVM-Installation-on-Ubuntu/assets/132996836/a5cf1518-f518-411c-9ca1-b687f111c130">
+
+
 click on the highlighted computer icon and the New virtual machine wizard starts.
+
+
+<img width="284" alt="image" src="https://github.com/Srujana0303/Ex-05-KVM-Installation-on-Ubuntu/assets/132996836/a10e06ff-c66f-4e48-8102-5b1f8d060962">
 
  
 Provide the information and Press Forward.
 In the following screen, select the installation source and the type of virtual machine that you want to install. Press Forward
 
+<img width="292" alt="image" src="https://github.com/Srujana0303/Ex-05-KVM-Installation-on-Ubuntu/assets/132996836/4fa16736-19e7-49ee-b8d5-5a27f4fe4d76">
+
+
+
+<img width="278" alt="image" src="https://github.com/Srujana0303/Ex-05-KVM-Installation-on-Ubuntu/assets/132996836/1413797c-47fe-42d0-ae81-f72ff96dff61">
 
 
 In the next screen, simply specify CPU and Memory information. Press Forward
@@ -101,9 +140,15 @@ In the next screen, simply specify CPU and Memory information. Press Forward
 In the next screen, provide the information about the virtual disk to created and Press Forward
 
 
+<img width="319" alt="image" src="https://github.com/Srujana0303/Ex-05-KVM-Installation-on-Ubuntu/assets/132996836/8c7de4c8-49e0-4c0a-a9f4-ffc23c1dc65f">
+
 
 
 In the final screen, provide the information about the Virtual networking and Press Finish
+
+
+
+<img width="279" alt="image" src="https://github.com/Srujana0303/Ex-05-KVM-Installation-on-Ubuntu/assets/132996836/8f321c10-6185-43f5-a5d6-916b8c99482f">
 
 
 
